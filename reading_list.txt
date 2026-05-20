@@ -1,0 +1,161 @@
+RESEARCH PAPER READING LIST
+MRI Subcortical Brain Segmentation
+====================================
+Hullaah | SIWES 2026
+====================================
+
+READ IN ORDER. DO NOT SKIP AHEAD.
+
+------------------------------------
+PHASE 1: FOUNDATION (Papers 1-3)
+------------------------------------
+
+1. Despotovic, I., Goossens, B., & Philips, W.
+   "MRI Segmentation of the Human Brain: Challenges, Methods, and Applications"
+   Computational and Mathematical Methods in Medicine, 2015.
+   STATUS: IN PROGRESS ✓
+
+2. Fischl, B.
+   "FreeSurfer"
+   NeuroImage, 62(2), 774-781, 2012.
+
+3. Patenaude, B., Smith, S. M., Kennedy, D. N., & Jenkinson, M.
+   "A Bayesian Model of Shape and Appearance for Subcortical Brain Segmentation"
+   NeuroImage, 56(3), 907-922, 2011.
+   NOTE: This is the FSL FIRST paper — directly relevant to your tools.
+
+------------------------------------
+PHASE 2: CLASSICAL METHODS (Papers 4-6)
+------------------------------------
+
+4. Babalola, K. O., Patenaude, B., Aljabar, P., Schnabel, J., Kennedy, D., & Crum, W.
+   "Comparison and Evaluation of Segmentation Techniques for Subcortical Structures in Brain MRI"
+   MICCAI, 2008.
+
+5. Kim, E. Y., Ye, J. C., Kim, E., & Park, K. H.
+   "Semiautomatic Segmentation of Brain Subcortical Structures from High-Field MRI"
+   Journal of Digital Imaging, 2012.
+
+6. Chupin, M., Gérardin, E., Cuingnet, R., Tuppin, P., Cointepas, Y., Lehéricy, S., ... & Colliot, O.
+   "Fully Automatic Hippocampus Segmentation and Classification in Alzheimer's Disease
+   and Mild Cognitive Impairment Applied on Data from ADNI"
+   Hippocampus, 19(6), 579-587, 2009.
+
+------------------------------------
+PHASE 3: TRANSITION TO DEEP LEARNING (Papers 7-9)
+------------------------------------
+
+7. Litjens, G., Kooi, T., Bejnordi, B. E., Setio, A. A. A., Ciompi, F., Ghafoorian, M., ... & Sánchez, C. I.
+   "A Survey on Deep Learning in Medical Image Analysis"
+   Medical Image Analysis, 42, 60-88, 2017.
+   NOTE: Read this before touching any deep learning paper. It is the map.
+
+8. Ronneberger, O., Fischer, P., & Brox, T.
+   "U-Net: Convolutional Networks for Biomedical Image Segmentation"
+   MICCAI, 2015.
+   NOTE: This is the foundational paper. Everything after builds on this.
+
+9. Çiçek, Ö., Abdulkadir, A., Lienkamp, S. S., Brox, T., & Ronneberger, O.
+   "3D U-Net: Learning Dense Volumetric Segmentation from Sparse Annotation"
+   MICCAI, 2016.
+   NOTE: Direct extension of U-Net to 3D volumes — exactly your use case.
+
+------------------------------------
+PHASE 4: DEEP LEARNING FOR SUBCORTICAL STRUCTURES (Papers 10-12)
+------------------------------------
+
+10. Dolz, J., Desrosiers, C., & Ben Ayed, I.
+    "3D Fully Convolutional Networks for Subcortical Segmentation in MRI:
+    A Large-Scale Study"
+    NeuroImage, 170, 456-470, 2018.
+
+11. Wachinger, C., Reuter, M., & Klein, T.
+    "DeepNAT: Deep Convolutional Neural Network for Segmenting Neuroanatomy"
+    NeuroImage, 170, 434-445, 2018.
+
+12. Mehta, R., Majumdar, A., & Sivaswamy, J.
+    "BrainSegNet: A Convolutional Neural Network Architecture for
+    Automated Segmentation of Human Brain Structures"
+    Journal of Medical Imaging, 4(2), 2017.
+
+------------------------------------
+PHASE 5: ROBUSTNESS AND GENERALIZATION (Papers 13-16)
+------------------------------------
+
+13. Billot, B., Greve, D., Van Leemput, K., Fischl, B., & Iglesias, J. E.
+    "SynthSeg: Segmentation of Brain MRI Scans of Any Contrast and Resolution
+    Without Retraining"
+    Medical Image Analysis, 2023.
+
+14. Billot, B., Greve, D., Van Leemput, K., Fischl, B., & Iglesias, J. E.
+    "A Learning Strategy for Contrast-agnostic MRI Segmentation"
+    (Deep Learning Toolbox for Automatic Segmentation of Subcortical Limbic Structures)
+    MIDL, 2020.
+
+15. Billot, B., Greve, D., Van Leemput, K., Fischl, B., & Iglesias, J. E.
+    "Generalizing Deep Learning MRI Reconstruction Across Different Input Contrasts
+    Using Hypernet-based Weight Generation"
+    MICCAI, 2021.
+
+16. Ochs, A., Caspers, S., Schreiber, M., et al.
+    "Comparative Analysis of MRI Automated Segmentation of Subcortical Brain Volumes"
+    2021.
+
+------------------------------------
+PHASE 6: PREPROCESSING AND PIPELINES (Papers 17-18)
+------------------------------------
+
+17. Tustison, N. J., Avants, B. B., Cook, P. A., Zheng, Y., Egan, A., Yushkevich, P. A., & Gee, J. C.
+    "N4ITK: Improved N3 Bias Correction"
+    IEEE Transactions on Medical Imaging, 29(6), 1310-1320, 2010.
+    NOTE: Bias field correction is a core preprocessing step. You will use this.
+
+18. Smith, S. M., Jenkinson, M., Woolrich, M. W., Beckmann, C. F., Behrens, T. E., ... & Matthews, P. M.
+    "Advances in Functional and Structural MR Image Analysis and Implementation as FSL"
+    NeuroImage, 23, S208-S219, 2004.
+    NOTE: This is the FSL paper itself. Know your tools.
+
+------------------------------------
+PHASE 7: EVALUATION AND METHODOLOGY (Papers 19-20)
+------------------------------------
+
+19. Dice, L. R.
+    "Measures of the Amount of Ecologic Association Between Species"
+    Ecology, 26(3), 297-302, 1945.
+    NOTE: Yes this is from 1945. This is the origin of the Dice coefficient
+    you will use to evaluate every model you build. Short paper. Read it.
+
+20. Maier-Hein, L., Reinke, A., Kozubek, M., et al.
+    "Why Rankings of Biomedical Image Analysis Competitions Should Be
+    Interpreted with Care"
+    Nature Communications, 9(1), 5217, 2018.
+    NOTE: Read this last. It will teach you how to honestly evaluate and
+    present your results. Critical for making the project research grade.
+
+====================================
+NOTES
+====================================
+
+- Verify all papers on Google Scholar or PubMed before reading.
+  Some details may need confirmation.
+- Follow citation trails. The best papers for your specific case
+  will be found inside these papers, not outside them.
+- Read papers 1-6 alongside fast.ai.
+  Read papers 7-20 after you have fast.ai fundamentals.
+- When you finish paper 8 (U-Net), you will know exactly
+  what your implementation needs to look like.
+
+====================================
+THE PLAN
+====================================
+
+PARALLEL TRACK (Now until fast.ai done):
+  - Papers 1-6
+  - fast.ai Part 1 and Part 2
+
+THEN:
+  - Papers 7-20
+  - MIT 6.036 (Linear Models to Deep Learning)
+  - Build the actual project
+
+====================================
