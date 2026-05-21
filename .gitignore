@@ -3,3 +3,5 @@ downloads/
 *.xlsx
 nii/
 logs/
+.venv/
+__pycache__/
