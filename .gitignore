@@ -1,6 +1,5 @@
 oasis/
 downloads/
-*.xlsx
 nii/
 logs/
 .venv/
