@@ -4,3 +4,4 @@ nii/
 logs/
 .venv/
 __pycache__/
+*logs.txt

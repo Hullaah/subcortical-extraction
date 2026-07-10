@@ -3,18 +3,18 @@
 . common.sh
 
 MRI_OUTPUT_DIR=nii/mri
-SEG_OUTPUT_DIR=nii/seg
+PARALLEL_JOBS=4
 
 mkdir -p "$MRI_OUTPUT_DIR"
-mkdir -p "$SEG_OUTPUT_DIR"
 
 EXTRACT_DIR="$(mktemp -d)"
-
 echo "Extract directory: $EXTRACT_DIR"
 
-for SUFFIX in "${SUFFIXES[@]}";
-do
-    FOLDER_NAME="$PREFIX$SUFFIX"
+export DOWNLOAD_DIR PREFIX MRI_OUTPUT_DIR EXTRACT_DIR
+
+process_folder() {
+    local SUFFIX="$1"
+    local FOLDER_NAME="$PREFIX$SUFFIX"
 
     mkdir -p "$EXTRACT_DIR/$FOLDER_NAME"
 
@@ -32,10 +32,10 @@ do
         -type f \
         -name "*masked_gfc.img" \
         ! -name "*fseg*" \
+        ! -name "*to_std_sub*" \
     | while read -r IMG_FILE
     do
         BASENAME="$(basename "$IMG_FILE" .img)"
-
         OUTPUT_FILE="$MRI_OUTPUT_DIR/$BASENAME"
 
         echo "Converting $IMG_FILE -> $OUTPUT_FILE.nii.gz"
@@ -45,27 +45,11 @@ do
             "$OUTPUT_FILE"
     done
 
-    echo "Converting segmentation volumes from $FOLDER_NAME"
-
-    find "$EXTRACT_DIR/$FOLDER_NAME" \
-        -type f \
-        -name "*fseg.img" \
-    | while read -r IMG_FILE
-    do
-        BASENAME="$(basename "$IMG_FILE" .img)"
-
-        OUTPUT_FILE="$SEG_OUTPUT_DIR/$BASENAME"
-
-        echo "Converting $IMG_FILE -> $OUTPUT_FILE.nii.gz"
-
-        fslchfiletype NIFTI_GZ \
-            "$IMG_FILE" \
-            "$OUTPUT_FILE"
-    done
-
     echo "Deleting directory $EXTRACT_DIR/$FOLDER_NAME"
-
     rm -rf "${EXTRACT_DIR:?}/$FOLDER_NAME"
-done
+}
+export -f process_folder
+
+printf '%s\n' "${SUFFIXES[@]}" | parallel -j "$PARALLEL_JOBS" process_folder {}
 
 echo "Dataset conversion complete."

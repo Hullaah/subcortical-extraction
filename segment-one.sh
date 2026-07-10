@@ -31,10 +31,17 @@ BASENAME="$(basename "$NII_FILE" .nii.gz)"
 SUBJECT_OUT_DIR="$SEG_OUTPUT_DIR/$BASENAME"
 LOG_DIR="$FIRST_LOG_DIR/$BASENAME"
 
+WORK_DIR="$(mktemp -d)"
+trap 'rm -rf "$WORK_DIR"' EXIT
+
+WORK_NII="$WORK_DIR/${BASENAME}.nii.gz"
+cp "$NII_FILE" "$WORK_NII"
+
 mkdir -p "$SUBJECT_OUT_DIR"
 mkdir -p "$LOG_DIR"
 
 echo "Segmenting: $NII_FILE"
+echo "Working copy: $WORK_NII"
 echo "Output dir: $SUBJECT_OUT_DIR"
 echo "Logs dir:   $LOG_DIR"
 echo ""
@@ -54,7 +61,7 @@ for STRUCTURE in "${FIRST_STRUCTURES[@]}"; do
     echo "Segmenting $STRUCTURE..."
 
     run_first_all \
-        -i "$NII_FILE" \
+        -i "$WORK_NII" \
         -o "$OUTPUT_PREFIX" \
         -s "$STRUCTURE" \
         -b \

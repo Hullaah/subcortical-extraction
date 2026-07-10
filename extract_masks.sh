@@ -3,12 +3,11 @@
 
 MRI_INPUT_DIR=nii/mri
 PARALLEL_JOBS=3
-
 export PARALLEL_JOBS
 
 find "$MRI_INPUT_DIR" \
     -type f \
     -name "*.nii.gz" \
-| parallel -j "$PARALLEL_JOBS" ./segment-one.sh {}
+| parallel -j "$PARALLEL_JOBS" ./extract-masks-one.sh {}
 
-echo "Subcortical segmentation complete."
+echo "Mask extraction complete."
